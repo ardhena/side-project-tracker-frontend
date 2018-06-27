@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <NavBarTop />
+    <NavBarTop/>
+    <ColumnsBox/>
   </div>
 </template>
 
 <script>
-import NavBarTop from './components/NavBarTop.vue'
+import NavBarTop from '@/components/NavBarTop.vue'
+import ColumnsBox from '@/components/ColumnsBox.vue'
 
 export default {
   name: 'app',
   components: {
-    NavBarTop
+    NavBarTop,
+    ColumnsBox
   }
 }
 </script>
