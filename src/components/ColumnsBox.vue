@@ -3,6 +3,7 @@
     <EntryColumn
       v-for="column in columns"
       :column="column"
+      :tasks="filterTasks(tasks, column.key)"
       :key="column.key"/>
   </div>
 </template>
@@ -18,10 +19,23 @@ export default {
   data: function() {
     return {
       columns: [
-        {name: "To do", hover: false},
-        {name: "Doing", hover: false},
-        {name: "Done", hover: false}
+        {name: 'To do', hover: false, key: 'to-do'},
+        {name: 'Doing', hover: false, key: 'doing'},
+        {name: 'Done', hover: false, key: 'done'}
+      ],
+      tasks: [
+        {name: 'some task', column: 'to-do'},
+        {name: 'another task', column: 'to-do'},
+        {name: 'already done task', column: 'done'},
+        {name: 'working on it now', column: 'doing'},
       ]
+    }
+  },
+  methods: {
+    filterTasks: function(tasks, key) {
+      return tasks.filter(function(task) {
+        return task.column === key
+      })
     }
   }
 }
