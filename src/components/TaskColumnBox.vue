@@ -22,22 +22,22 @@ export default {
           name: 'To do',
           key: 'to-do',
           tasks: [
-            {name: 'some task', hover: false},
-            {name: 'another task', hover: false},
+            {name: 'some task', hover: false, editing: false},
+            {name: 'another task', hover: false, editing: false},
           ]
         },
         {
           name: 'Doing',
           key: 'doing',
           tasks: [
-            {name: 'working on it now', hover: false},
+            {name: 'working on it now', hover: false, editing: false},
           ]
         },
         {
           name: 'Done',
           key: 'done',
           tasks: [
-            {name: 'already done task', hover: false},
+            {name: 'already done task', hover: false, editing: false},
           ]
         }
       ]
