@@ -1,12 +1,13 @@
 <template>
-  <div class="entry-column">
+  <div class="column">
     <div class="name">{{column.name}}</div>
 
-    <draggable v-model="column.tasks" :options="{group:'tasks'}" class="tasks">
-      <Task
-        v-for="(task, index) in column.tasks"
-        :task="task"
-        :key="index"/>
+    <draggable v-model="column.tasks"
+               :options="{group:'tasks'}"
+               class="tasks">
+      <Task v-for="(task, index) in column.tasks"
+            :task="task"
+            :key="index"/>
     </draggable>
   </div>
 </template>
@@ -16,7 +17,7 @@ import draggable from 'vuedraggable'
 import Task from '@/components/Task.vue'
 
 export default {
-  name: 'EntryColumn',
+  name: 'TaskColumn',
   components: {
     Task,
     draggable
@@ -28,13 +29,13 @@ export default {
 </script>
 
 <style scoped>
-.entry-column {
+.column {
   margin: 20px 0;
   width: 350px;
   height: 600px;
   padding: 10px 20px;
 }
-.entry-column .name {
+.column .name {
   border-bottom: 1px #b3a9c6 solid;
   padding: 10px;
   text-align: center;

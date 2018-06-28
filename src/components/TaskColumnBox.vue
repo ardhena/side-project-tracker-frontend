@@ -1,6 +1,6 @@
 <template>
-  <div class="columns-box">
-    <EntryColumn
+  <div class="box">
+    <TaskColumn
         v-for="column in columns"
         :column="column"
         :key="column.key"/>
@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import EntryColumn from '@/components/EntryColumn.vue'
+import TaskColumn from '@/components/TaskColumn.vue'
 
 export default {
-  name: 'ColumnsBox',
+  name: 'TaskColumnBox',
   components: {
-    EntryColumn
+    TaskColumn
   },
   data: function() {
     return {
@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style scoped>
-.columns-box {
+.box {
   display: flex;
   justify-content: center;
 }

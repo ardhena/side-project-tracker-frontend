@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <NavBarTop/>
-    <ColumnsBox/>
+    <NavBox/>
+    <TaskColumnBox/>
   </div>
 </template>
 
 <script>
-import NavBarTop from '@/components/NavBarTop.vue'
-import ColumnsBox from '@/components/ColumnsBox.vue'
+import NavBox from '@/components/NavBox.vue'
+import TaskColumnBox from '@/components/TaskColumnBox.vue'
 
 export default {
   name: 'app',
   components: {
-    NavBarTop,
-    ColumnsBox
+    NavBox,
+    TaskColumnBox
   }
 }
 </script>
@@ -24,9 +24,6 @@ body {
   background-color: #fbfbfb;
   margin: 0;
   padding: 0;
-}
-
-#app {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
