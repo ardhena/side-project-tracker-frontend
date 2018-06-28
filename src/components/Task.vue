@@ -1,5 +1,10 @@
 <template>
-  <div class="task" >{{task.name}}</div>
+  <div class="task"
+       :class="task.hover ? 'highlighted' : ''"
+       @mouseover="task.hover = true"
+       @mouseleave="task.hover = false">
+    {{task.name}}
+  </div>
 </template>
 
 <script>
@@ -18,6 +23,11 @@ export default {
   margin: 15px 0;
   padding: 20px;
   background-color: rgba(179, 169, 198, 0.3);
+  border: 1px transparent solid;
   cursor: grab;
+}
+.task.highlighted {
+  background-color: rgba(179, 169, 198, 0.6);
+  border: 1px #ac91e2 solid;
 }
 </style>

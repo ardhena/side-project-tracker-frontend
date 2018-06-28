@@ -20,27 +20,24 @@ export default {
       columns: [
         {
           name: 'To do',
-          hover: false,
           key: 'to-do',
           tasks: [
-            {name: 'some task'},
-            {name: 'another task'},
+            {name: 'some task', hover: false},
+            {name: 'another task', hover: false},
           ]
         },
         {
           name: 'Doing',
-          hover: false,
           key: 'doing',
           tasks: [
-            {name: 'working on it now'},
+            {name: 'working on it now', hover: false},
           ]
         },
         {
           name: 'Done',
-          hover: false,
           key: 'done',
           tasks: [
-            {name: 'already done task'},
+            {name: 'already done task', hover: false},
           ]
         }
       ]

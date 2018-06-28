@@ -1,8 +1,5 @@
 <template>
-  <div class="entry-column"
-       :class="column.hover ? 'highlighted' : ''"
-       @mouseover="column.hover = true"
-       @mouseleave="column.hover = false">
+  <div class="entry-column">
     <div class="name">{{column.name}}</div>
 
     <draggable v-model="column.tasks" :options="{group:'tasks'}" class="tasks">
@@ -36,9 +33,6 @@ export default {
   width: 350px;
   height: 600px;
   padding: 10px 20px;
-}
-.entry-column.highlighted {
-  background-color: rgba(179, 169, 198, 0.1);
 }
 .entry-column .name {
   border-bottom: 1px #b3a9c6 solid;
