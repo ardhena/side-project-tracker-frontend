@@ -7,6 +7,7 @@
                class="tasks">
       <Task v-for="(task, index) in column.tasks"
             :task="task"
+            :column="column"
             :key="index"/>
     </draggable>
   </div>

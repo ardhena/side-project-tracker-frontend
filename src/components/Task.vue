@@ -8,20 +8,32 @@
             @click="task.editing = true">
         {{task.name}}
       </span>
-      <button class="edit"
-            @click="task.editing = true">
-        Edit
-      </button>
+      <div class="buttons">
+        <button class="edit"
+              @click="task.editing = true">
+          Edit
+        </button>
+        <button class="delete"
+              @click="deleteTask">
+          Delete
+        </button>
+      </div>
     </div>
     <div v-show="task.editing" class="text-input">
       <input class="content"
              placeholder="New task"
              v-model="task.name"
              @keyup.enter="task.editing = false"/>
-      <button class="close"
-            @click="task.editing = false">
-        OK
-      </button>
+      <div class="buttons">
+        <button class="close"
+              @click="task.editing = false">
+          OK
+        </button>
+        <button class="delete"
+              @click="deleteTask">
+          Delete
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +42,17 @@
 export default {
   name: 'Task',
   props: {
-    task: Object
+    task: Object,
+    column: Object
+  },
+  methods: {
+    deleteTask: function() {
+      let deletedTask = this.task
+      let newTasks = this.column.tasks.filter(function(task) {
+        return task.name != deletedTask.name
+      })
+      this.column.tasks = newTasks
+    }
   }
 }
 </script>
@@ -73,10 +95,17 @@ export default {
   padding: 0 5px;
 }
 
-.task .text-input .close, .task .text .edit {
+.task .buttons {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.task .text-input .close, .task .text-input .delete, .task .text .edit, .task .text .delete {
   background-color: #fbfbfb;
   border: 1px #b3a9c6 solid;
   padding: 5px;
   cursor: pointer;
+  margin: 0 3px;
 }
 </style>

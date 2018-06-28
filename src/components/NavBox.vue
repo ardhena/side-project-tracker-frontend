@@ -27,19 +27,21 @@ export default {
       title: "Simple to do application",
       links: [
         {
-          name: 'About',
+          name: 'New task',
           hover: false,
-          key: 'about-entry',
+          key: 'new-task',
           function: function() {
-            alert("about entry")
+            columns[0].tasks.unshift({name: '', hover: false, editing: true})
           }
         },
         {
-          name: 'New task',
+          name: 'Clear all tasks',
           hover: false,
-          key: 'new-entry',
+          key: 'clear-tasks',
           function: function() {
-            columns[0].tasks.unshift({name: '', hover: false, editing: true})
+            columns[0].tasks = []
+            columns[1].tasks = []
+            columns[2].tasks = []
           }
         },
       ]
