@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <NavBox/>
-    <TaskColumnBox/>
+    <NavBox :columns="columns"/>
+    <TaskColumnBox :columns="columns"/>
   </div>
 </template>
 
@@ -14,6 +14,34 @@ export default {
   components: {
     NavBox,
     TaskColumnBox
+  },
+  data: function() {
+    return {
+      columns: [
+        {
+          name: 'To do',
+          key: 'to-do',
+          tasks: [
+            {name: 'some task', hover: false, editing: false},
+            {name: 'another task', hover: false, editing: false},
+          ]
+        },
+        {
+          name: 'Doing',
+          key: 'doing',
+          tasks: [
+            {name: 'working on it now', hover: false, editing: false},
+          ]
+        },
+        {
+          name: 'Done',
+          key: 'done',
+          tasks: [
+            {name: 'already done task', hover: false, editing: false},
+          ]
+        }
+      ]
+    }
   }
 }
 </script>

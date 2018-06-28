@@ -32,7 +32,6 @@ export default {
 .column {
   margin: 20px 0;
   width: 350px;
-  height: 600px;
   padding: 10px 20px;
 }
 .column .name {
@@ -43,6 +42,7 @@ export default {
 }
 
 .tasks {
-  height: 500px;
+  height: 620px;
+  overflow: auto;
 }
 </style>

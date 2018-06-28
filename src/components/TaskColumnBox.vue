@@ -1,9 +1,8 @@
 <template>
   <div class="box">
-    <TaskColumn
-        v-for="column in columns"
-        :column="column"
-        :key="column.key"/>
+    <TaskColumn v-for="column in columns"
+                :column="column"
+                :key="column.key"/>
   </div>
 </template>
 
@@ -15,33 +14,8 @@ export default {
   components: {
     TaskColumn
   },
-  data: function() {
-    return {
-      columns: [
-        {
-          name: 'To do',
-          key: 'to-do',
-          tasks: [
-            {name: 'some task', hover: false, editing: false},
-            {name: 'another task', hover: false, editing: false},
-          ]
-        },
-        {
-          name: 'Doing',
-          key: 'doing',
-          tasks: [
-            {name: 'working on it now', hover: false, editing: false},
-          ]
-        },
-        {
-          name: 'Done',
-          key: 'done',
-          tasks: [
-            {name: 'already done task', hover: false, editing: false},
-          ]
-        }
-      ]
-    }
+  props: {
+    columns: Array
   }
 }
 </script>

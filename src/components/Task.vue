@@ -15,6 +15,7 @@
     </div>
     <div v-show="task.editing" class="text-input">
       <input class="content"
+             placeholder="New task"
              v-model="task.name"
              @keyup.enter="task.editing = false"/>
       <button class="close"

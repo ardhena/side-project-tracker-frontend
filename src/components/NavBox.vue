@@ -18,7 +18,11 @@ export default {
   components: {
     NavLink
   },
+  props: {
+    columns: Array
+  },
   data: function() {
+    var columns = this.columns
     return {
       title: "Simple to do application",
       links: [
@@ -35,7 +39,7 @@ export default {
           hover: false,
           key: 'new-entry',
           function: function() {
-            alert("new entry")
+            columns[0].tasks.unshift({name: '', hover: false, editing: true})
           }
         },
       ]
