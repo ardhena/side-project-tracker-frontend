@@ -4,26 +4,28 @@
        @mouseover="column.hover = true"
        @mouseleave="column.hover = false">
     <div class="name">{{column.name}}</div>
-    <div class="tasks">
+
+    <draggable v-model="column.tasks" :options="{group:'tasks'}" class="tasks">
       <Task
-        v-for="(task, index) in tasks"
+        v-for="(task, index) in column.tasks"
         :task="task"
         :key="index"/>
-    </div>
+    </draggable>
   </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
 import Task from '@/components/Task.vue'
 
 export default {
   name: 'EntryColumn',
   components: {
-    Task
+    Task,
+    draggable
   },
   props: {
-    column: Object,
-    tasks: Array
+    column: Object
   }
 }
 </script>
@@ -43,5 +45,9 @@ export default {
   padding: 10px;
   text-align: center;
   font-weight: 600;
+}
+
+.tasks {
+  height: 500px;
 }
 </style>
