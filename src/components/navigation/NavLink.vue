@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/sass/variables";
+@import "../../assets/sass/variables";
 
 .link {
   border-bottom: 3px transparent solid;

@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <NavBox :columns="columns"/>
-    <TaskColumnBox :columns="columns"/>
+    <NavBox/>
+    <TaskColumnBox/>
   </div>
 </template>
 
 <script>
-import NavBox from '@/components/NavBox.vue'
+import NavBox from '@/components/navigation/NavBox.vue'
 import TaskColumnBox from '@/components/TaskColumnBox.vue'
 
 export default {
@@ -14,11 +14,6 @@ export default {
   components: {
     NavBox,
     TaskColumnBox
-  },
-  data: function() {
-    return {
-      columns: this.$store.state.columns
-    }
   }
 }
 </script>

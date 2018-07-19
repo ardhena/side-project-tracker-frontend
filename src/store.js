@@ -31,7 +31,14 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-
+    newTask (state) {
+      state.columns[0].tasks.unshift({name: '', hover: false, editing: true})
+    },
+    clearTasks (state) {
+      state.columns[0].tasks = []
+      state.columns[1].tasks = []
+      state.columns[2].tasks = []
+    }
   },
   actions: {
 

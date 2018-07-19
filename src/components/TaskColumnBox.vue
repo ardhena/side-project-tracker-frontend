@@ -14,9 +14,11 @@ export default {
   components: {
     TaskColumn
   },
-  props: {
-    columns: Array
-  }
+  computed: {
+    columns() {
+      return this.$store.state.columns
+    }
+  },
 }
 </script>
 

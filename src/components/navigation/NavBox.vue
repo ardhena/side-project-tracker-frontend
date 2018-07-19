@@ -11,18 +11,15 @@
 </template>
 
 <script>
-import NavLink from "@/components/NavLink.vue"
+import NavLink from "@/components/navigation/NavLink.vue"
 
 export default {
   name: 'NavBox',
   components: {
     NavLink
   },
-  props: {
-    columns: Array
-  },
   data: function() {
-    var columns = this.columns
+    var that = this
     return {
       title: "Simple to do application",
       links: [
@@ -31,7 +28,7 @@ export default {
           hover: false,
           key: 'new-task',
           function: function() {
-            columns[0].tasks.unshift({name: '', hover: false, editing: true})
+            that.$store.commit('newTask')
           }
         },
         {
@@ -39,9 +36,7 @@ export default {
           hover: false,
           key: 'clear-tasks',
           function: function() {
-            columns[0].tasks = []
-            columns[1].tasks = []
-            columns[2].tasks = []
+            that.$store.commit('clearTasks')
           }
         },
       ]
@@ -51,7 +46,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/sass/variables";
+@import "../../assets/sass/variables";
 
 .box {
   border-bottom: 1px $primary solid;
