@@ -58,18 +58,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/sass/variables";
+
 .task {
   display: flex;
   flex-direction: column;
   margin: 15px 0;
   padding: 20px;
-  background-color: rgba(179, 169, 198, 0.3);
+  background-color: $primary-lightest;
   border: 1px transparent solid;
   cursor: move;
 
   &.highlighted {
-    background-color: rgba(179, 169, 198, 0.6);
-    border: 1px #ac91e2 solid;
+    background-color: $primary-lighter;
+    border: 1px $highlight solid;
   }
 
   .text {
@@ -90,8 +92,8 @@ export default {
     justify-content: space-between;
 
     .content {
-      background-color: #fbfbfb;
-      border: 1px #b3a9c6 solid;
+      background-color: $white;
+      border: 1px $primary solid;
       width: calc(100% - 50px);
       padding: 0 5px;
     }
@@ -104,8 +106,8 @@ export default {
   }
 
   .text-input .close, .text-input .delete, .text .edit, .text .delete {
-    background-color: #fbfbfb;
-    border: 1px #b3a9c6 solid;
+    background-color: $white;
+    border: 1px $primary solid;
     padding: 5px;
     cursor: pointer;
     margin: 0 3px;

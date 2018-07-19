@@ -30,13 +30,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/sass/variables";
+
 .column {
   margin: 20px 0;
   width: 350px;
   padding: 10px 20px;
 
   .name {
-    border-bottom: 1px #b3a9c6 solid;
+    border-bottom: 1px $primary solid;
     padding: 10px;
     text-align: center;
     font-weight: 600;

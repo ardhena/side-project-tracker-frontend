@@ -18,13 +18,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/sass/variables";
+
 .link {
   border-bottom: 3px transparent solid;
   padding: 20px 10px 17px 10px;
   margin: 0 5px;
 
   .highlighted {
-    border-bottom: 3px #ac91e2 solid;
+    border-bottom: 3px $highlight solid;
     cursor: pointer;
   }
 }

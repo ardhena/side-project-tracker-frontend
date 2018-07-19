@@ -51,8 +51,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/sass/variables";
+
 .box {
-  border-bottom: 1px #b3a9c6 solid;
+  border-bottom: 1px $primary solid;
   padding: 0;
   display: inline-flex;
   width: 100%;

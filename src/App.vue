@@ -46,13 +46,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "assets/sass/variables";
+
 body {
-  color: #2c2a30;
-  background-color: #fbfbfb;
+  color: $black;
+  background-color: $white;
   margin: 0;
   padding: 0;
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
