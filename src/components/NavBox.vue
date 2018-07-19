@@ -50,23 +50,24 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .box {
   border-bottom: 1px #b3a9c6 solid;
   padding: 0;
   display: inline-flex;
   width: 100%;
-}
-.box .title {
-  font-weight: 600;
-  width: 50%;
-  padding: 20px 0 17px 20px;
-}
 
-.box .links {
-  width: 50%;
-  display: inline-flex;
-  justify-content: flex-end;
-  padding: 0 20px;
+  .title {
+    font-weight: 600;
+    width: 50%;
+    padding: 20px 0 17px 20px;
+  }
+
+  .links {
+    width: 50%;
+    display: inline-flex;
+    justify-content: flex-end;
+    padding: 0 20px;
+  }
 }
 </style>

@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .task {
   display: flex;
   flex-direction: column;
@@ -66,46 +66,49 @@ export default {
   background-color: rgba(179, 169, 198, 0.3);
   border: 1px transparent solid;
   cursor: move;
-}
-.task.highlighted {
-  background-color: rgba(179, 169, 198, 0.6);
-  border: 1px #ac91e2 solid;
-}
 
-.task .text {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.task .text .name {
-  cursor: text;
-  width: auto;
-}
+  &.highlighted {
+    background-color: rgba(179, 169, 198, 0.6);
+    border: 1px #ac91e2 solid;
+  }
 
-.task .text-input {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.task .text-input .content {
-  background-color: #fbfbfb;
-  border: 1px #b3a9c6 solid;
-  width: calc(100% - 50px);
-  padding: 0 5px;
-}
+  .text {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-.task .buttons {
-  display: inline-flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+    .name {
+      cursor: text;
+      width: auto;
+    }
+  }
 
-.task .text-input .close, .task .text-input .delete, .task .text .edit, .task .text .delete {
-  background-color: #fbfbfb;
-  border: 1px #b3a9c6 solid;
-  padding: 5px;
-  cursor: pointer;
-  margin: 0 3px;
+  .text-input {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .content {
+      background-color: #fbfbfb;
+      border: 1px #b3a9c6 solid;
+      width: calc(100% - 50px);
+      padding: 0 5px;
+    }
+  }
+
+  .buttons {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .text-input .close, .text-input .delete, .text .edit, .text .delete {
+    background-color: #fbfbfb;
+    border: 1px #b3a9c6 solid;
+    padding: 5px;
+    cursor: pointer;
+    margin: 0 3px;
+  }
 }
 </style>

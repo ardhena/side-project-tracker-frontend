@@ -17,14 +17,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .link {
   border-bottom: 3px transparent solid;
   padding: 20px 10px 17px 10px;
   margin: 0 5px;
-}
-.link.highlighted {
-  border-bottom: 3px #ac91e2 solid;
-  cursor: pointer;
+
+  .highlighted {
+    border-bottom: 3px #ac91e2 solid;
+    cursor: pointer;
+  }
 }
 </style>
