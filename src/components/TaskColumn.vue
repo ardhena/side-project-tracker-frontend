@@ -2,7 +2,7 @@
   <div class="column">
     <div class="name">{{column.name}}</div>
 
-    <draggable v-model="column.tasks"
+    <draggable v-model="tasks"
                :options="{group:'tasks'}"
                class="tasks">
       <Task v-for="(task, index) in column.tasks"
@@ -24,7 +24,18 @@ export default {
     draggable
   },
   props: {
-    column: Object
+    column: Object,
+    columnIndex: Number
+  },
+  computed: {
+    tasks: {
+      get() {
+        return this.$store.state.columns[this.columnIndex].tasks
+      },
+      set(tasks) {
+        this.$store.commit('moveTask', {tasks: tasks, column: this.column})
+      }
+    }
   }
 }
 </script>

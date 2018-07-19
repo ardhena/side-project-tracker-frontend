@@ -58,6 +58,12 @@ export default new Vuex.Store({
         return task.key == payload.task.key
       })
       state.columns[columnIndex].tasks[taskIndex].name = payload.task.name
+    },
+    moveTask(state, payload) {
+      let columnIndex = state.columns.findIndex(function(column) {
+        return column.key == payload.column.key
+      })
+      state.columns[columnIndex].tasks = payload.tasks
     }
   },
   actions: {

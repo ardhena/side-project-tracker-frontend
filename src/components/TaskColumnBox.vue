@@ -1,7 +1,8 @@
 <template>
   <div class="box">
-    <TaskColumn v-for="column in columns"
+    <TaskColumn v-for="(column, index) in columns"
                 :column="column"
+                :columnIndex="index"
                 :key="column.key"/>
   </div>
 </template>
