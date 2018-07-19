@@ -1,16 +1,16 @@
 <template>
   <div class="task"
-       :class="task.hover ? 'highlighted' : ''"
-       @mouseover="task.hover = true"
-       @mouseleave="task.hover = false">
-    <div class="text" v-show="!task.editing">
+       :class="hover ? 'highlighted' : ''"
+       @mouseover="mouseOverTask"
+       @mouseleave="mouseLeaveTask">
+    <div class="text" v-show="!editing">
       <span class="name"
-            @click="task.editing = true">
+            @click="editTask">
         {{task.name}}
       </span>
       <div class="buttons">
         <button class="edit"
-              @click="task.editing = true">
+              @click="editTask">
           Edit
         </button>
         <button class="delete"
@@ -19,14 +19,14 @@
         </button>
       </div>
     </div>
-    <div v-show="task.editing" class="text-input">
+    <div v-show="editing" class="text-input">
       <input class="content"
              placeholder="New task"
              v-model="task.name"
-             @keyup.enter="task.editing = false"/>
+             @keyup.enter="updateTask"/>
       <div class="buttons">
         <button class="close"
-              @click="task.editing = false">
+              @click="updateTask">
           OK
         </button>
         <button class="delete"
@@ -45,13 +45,28 @@ export default {
     task: Object,
     column: Object
   },
+  data: function() {
+    return {
+      hover: false,
+      editing: false
+    }
+  },
   methods: {
     deleteTask: function() {
-      let deletedTask = this.task
-      let newTasks = this.column.tasks.filter(function(task) {
-        return task.name != deletedTask.name
-      })
-      this.column.tasks = newTasks
+      this.$store.commit('deleteTask', {task: this.task, column: this.column})
+    },
+    editTask: function() {
+      this.editing = true
+    },
+    updateTask: function() {
+      this.editing = false
+      this.$store.commit('updateTask', {task: this.task, column: this.column})
+    },
+    mouseOverTask: function() {
+      this.hover = true
+    },
+    mouseLeaveTask: function() {
+      this.hover = false
     }
   }
 }
