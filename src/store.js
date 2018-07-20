@@ -1,38 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     taskLastId: 4,
-    columns: [
-      {
-        name: 'To do',
-        key: 'to-do',
-        tasks: [
-          {name: 'some task', key: 1},
-          {name: 'another task', key: 2},
-        ]
-      },
-      {
-        name: 'Doing',
-        key: 'doing',
-        tasks: [
-          {name: 'working on it now', key: 3},
-        ]
-      },
-      {
-        name: 'Done',
-        key: 'done',
-        tasks: [
-          {name: 'already done task', key: 4},
-        ]
-      }
-    ]
+    columns: []
   },
   mutations: {
-    newTask(state) {
+    fetchTasks(state, payload) {
+      state.columns = payload.columns
+    },
+    newTask(state, payload) {
       state.columns[0].tasks.unshift({name: '', key: state.taskLastId})
       state.taskLastId = state.taskLastId + 1
     },
@@ -67,6 +48,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
-
+    fetchTasks(context) {
+      const axios = require('axios');
+      axios.get('http://localhost:8800/api/v1/tasks')
+        .then(function (response) {
+          context.commit('fetchTasks', {columns: response.data})
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
   }
 })

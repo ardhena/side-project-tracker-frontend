@@ -14,6 +14,9 @@ export default {
   components: {
     NavBox,
     TaskColumnBox
+  },
+  mounted: function() {
+    this.$store.dispatch('fetchTasks')
   }
 }
 </script>
