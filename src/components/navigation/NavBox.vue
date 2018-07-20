@@ -28,7 +28,7 @@ export default {
           hover: false,
           key: 'new-task',
           function: function() {
-            that.$store.commit('newTask')
+            that.$store.dispatch('newTask')
           }
         },
         {
@@ -36,7 +36,7 @@ export default {
           hover: false,
           key: 'clear-tasks',
           function: function() {
-            that.$store.commit('clearTasks')
+            that.$store.dispatch('clearTasks')
           }
         },
       ]

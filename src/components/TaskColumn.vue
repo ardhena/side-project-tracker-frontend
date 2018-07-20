@@ -33,7 +33,7 @@ export default {
         return this.$store.state.columns[this.columnIndex].tasks
       },
       set(tasks) {
-        this.$store.commit('moveTask', {tasks: tasks, column: this.column})
+        this.$store.dispatch('moveTask', {tasks: tasks, column: this.column})
       }
     }
   }

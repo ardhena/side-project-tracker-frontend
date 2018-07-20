@@ -53,14 +53,14 @@ export default {
   },
   methods: {
     deleteTask: function() {
-      this.$store.commit('deleteTask', {task: this.task, column: this.column})
+      this.$store.dispatch('deleteTask', {task: this.task, column: this.column})
     },
     editTask: function() {
       this.editing = true
     },
     updateTask: function() {
       this.editing = false
-      this.$store.commit('updateTask', {task: this.task, column: this.column})
+      this.$store.dispatch('updateTask', {task: this.task, column: this.column})
     },
     mouseOverTask: function() {
       this.hover = true
