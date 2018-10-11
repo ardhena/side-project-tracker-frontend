@@ -90,7 +90,13 @@ export default new Vuex.Store({
       }
     },
     clearTasks({commit, state}, payload) {
-      commit('clearTasks', payload)
+      axios.delete(state.apiUrl)
+        .then(function (response) {
+          commit('clearTasks', payload)
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     },
     deleteTask({commit, state}, payload) {
       commit('deleteTask', payload)
