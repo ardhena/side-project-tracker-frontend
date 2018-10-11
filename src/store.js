@@ -77,7 +77,17 @@ export default new Vuex.Store({
         })
     },
     moveTask({commit, state}, payload) {
-      commit('moveTask', payload)
+      if (payload.task) {
+        axios.post(state.apiUrl + '/' + payload.task.key + '/move', {column_key: payload.column.key})
+          .then(function (response) {
+            commit('moveTask', payload)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      } else {
+        commit('moveTask', payload)
+      }
     },
     clearTasks({commit, state}, payload) {
       commit('clearTasks', payload)

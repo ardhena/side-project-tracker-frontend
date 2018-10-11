@@ -33,7 +33,15 @@ export default {
         return this.$store.state.columns[this.columnIndex].tasks
       },
       set(tasks) {
-        this.$store.dispatch('moveTask', {tasks: tasks, column: this.column})
+        let beforeTaskIds = this.$store.state.columns[this.columnIndex].tasks.map(task => task.key)
+        if (tasks.length > beforeTaskIds.length) {
+          let movedTask = tasks.find(function(task) {
+            return !beforeTaskIds.includes(task.key)
+          })
+          this.$store.dispatch('moveTask', {tasks: tasks, column: this.column, task: movedTask})
+        } else {
+          this.$store.dispatch('moveTask', {tasks: tasks, column: this.column, task: null})
+        }
       }
     }
   }
