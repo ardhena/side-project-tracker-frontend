@@ -99,7 +99,13 @@ export default new Vuex.Store({
         })
     },
     deleteTask({commit, state}, payload) {
-      commit('deleteTask', payload)
+      axios.delete(state.apiUrl + '/' + payload.task.key)
+        .then(function (response) {
+          commit('deleteTask', payload)
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     }
   }
 })
