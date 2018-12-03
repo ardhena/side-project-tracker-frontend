@@ -24,10 +24,10 @@ export default {
   border-bottom: 3px transparent solid;
   padding: 20px 10px 17px 10px;
   margin: 0 5px;
+}
 
-  .highlighted {
-    border-bottom: 3px $highlight solid;
-    cursor: pointer;
-  }
+.highlighted {
+  border-bottom: 3px $highlight solid;
+  cursor: pointer;
 }
 </style>

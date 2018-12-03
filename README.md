@@ -1,6 +1,8 @@
-# To do in vue.js
+# SideProjectTracker [frontend]
 
-## Running in development
+Frontend in Vue.js for [SideProjectTracker [backend]](https://github.com/ardhena/side-project-tracker-backend).
+
+## Development
 
 ```bash
 $ npm install

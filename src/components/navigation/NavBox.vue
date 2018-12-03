@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="title">{{title}}</div>
+    <div class="title">SideProjectTracker</div>
 
     <div class="links">
       <NavLink v-for="link in links"
@@ -21,7 +21,6 @@ export default {
   data: function() {
     var that = this
     return {
-      title: "Simple to do application",
       links: [
         {
           name: 'New task',
