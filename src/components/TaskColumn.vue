@@ -30,10 +30,13 @@ export default {
   computed: {
     tasks: {
       get() {
-        return this.$store.state.columns[this.columnIndex].tasks
+        let cols = this.$store.state.project.getColumns()
+        return cols[this.columnIndex].tasks
       },
       set(tasks) {
-        let beforeTaskIds = this.$store.state.columns[this.columnIndex].tasks.map(task => task.key)
+        let cols = this.$store.state.project.getColumns()
+        let beforeTaskIds = cols[this.columnIndex].tasks.map(task => task.key)
+
         if (tasks.length > beforeTaskIds.length) {
           let movedTask = tasks.find(function(task) {
             return !beforeTaskIds.includes(task.key)

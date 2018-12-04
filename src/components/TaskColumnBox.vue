@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     columns() {
-      return this.$store.state.columns
+      return this.$store.state.project.getColumns()
     }
   },
 }
