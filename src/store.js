@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    apiUrl: 'http://localhost:8800/api/v1', // move to config
+    apiUrl: process.env.VUE_APP_BACKEND_BASE_URL,
     project: new Project()
   },
   actions: {
