@@ -2,8 +2,8 @@ export class Project {
   getColumns() { return this.columns }
   setColumns(cols) { this.columns = cols }
 
-  addTask(taskLastId) {
-    this.columns[0].tasks.unshift({name: '', key: taskLastId})
+  addTask(uuid) {
+    this.columns[0].tasks.unshift({name: '', key: uuid})
     return this.columns
   }
 

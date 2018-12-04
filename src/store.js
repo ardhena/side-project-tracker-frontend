@@ -8,7 +8,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     apiUrl: 'http://localhost:8800/api/v1', // move to config
-    taskLastId: 4, // TODO: calculate based on results from API or do it on API side
     project: new Project()
   },
   actions: {
@@ -27,11 +26,13 @@ export default new Vuex.Store({
         })
     },
     newTask(context) {
+      const uuidv1 = require('uuid/v1');
+      let uuid = uuidv1()
+
       axios
-        .post(context.state.apiUrl + '/tasks', {column_key: 'todo', task_key: context.state.taskLastId + 1})
+        .post(context.state.apiUrl + '/tasks', {column_key: 'todo', task_key: uuid})
         .then(function () {
-          Vue.set(context.state.project, 'columns', context.state.project.addTask(context.state.taskLastId + 1))
-          context.state.taskLastId = context.state.taskLastId + 1
+          Vue.set(context.state.project, 'columns', context.state.project.addTask(uuid))
         })
     },
     updateTask(context, payload) {
