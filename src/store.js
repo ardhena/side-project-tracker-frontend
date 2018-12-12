@@ -13,14 +13,14 @@ export default new Vuex.Store({
   actions: {
     fetchTasks(context) {
       axios
-        .get(context.state.apiUrl + '/tasks')
+        .get(context.state.apiUrl + '/projects/default/tasks')
         .then(function (response) {
           Vue.set(context.state.project, 'columns', response.data)
         })
     },
     clearTasks(context) {
       axios
-        .delete(context.state.apiUrl + '/tasks')
+        .delete(context.state.apiUrl + '/projects/default/tasks')
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.clearTasks())
         })
@@ -30,14 +30,14 @@ export default new Vuex.Store({
       let uuid = uuidv1()
 
       axios
-        .post(context.state.apiUrl + '/tasks', {column_key: 'todo', task_key: uuid})
+        .post(context.state.apiUrl + '/projects/default/tasks', {column_key: 'todo', task_key: uuid})
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.addTask(uuid))
         })
     },
     updateTask(context, payload) {
       axios
-        .patch(context.state.apiUrl + '/tasks/' + payload.task.key, {task_name: payload.task.name})
+        .patch(context.state.apiUrl + '/projects/default/tasks/' + payload.task.key, {task_name: payload.task.name})
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.updateTask(payload))
         })
@@ -45,7 +45,7 @@ export default new Vuex.Store({
     moveTask(context, payload) {
       if (payload.task) {
         axios
-          .post(context.state.apiUrl + '/tasks/' + payload.task.key + '/move', {column_key: payload.column.key})
+          .post(context.state.apiUrl + '/projects/default/tasks/' + payload.task.key + '/move', {column_key: payload.column.key})
           .then(function () {
             Vue.set(context.state.project, 'columns', context.state.project.moveTask(payload))
           })
@@ -55,7 +55,7 @@ export default new Vuex.Store({
     },
     deleteTask(context, payload) {
       axios
-        .delete(context.state.apiUrl + '/tasks/' + payload.task.key)
+        .delete(context.state.apiUrl + '/projects/default/tasks/' + payload.task.key)
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.deleteTask(payload))
         })
