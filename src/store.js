@@ -8,9 +8,28 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     apiUrl: process.env.VUE_APP_BACKEND_BASE_URL,
-    project: new Project()
+    project: new Project(),
+    projects: [],
+    currentPage: 'projects.index'
+  },
+  getters: {
+    currentPage: (state) => {
+      return state.currentPage
+    }
+  },
+  mutations: {
+    setCurrentPage(state, newCurrentPage) {
+      state.currentPage = newCurrentPage
+    }
   },
   actions: {
+    fetchProjects(context) {
+      axios
+        .get(context.state.apiUrl + '/projects')
+        .then(function (response) {
+          context.state.projects = response.data
+        })
+    },
     fetchTasks(context) {
       axios
         .get(context.state.apiUrl + '/projects/default/tasks')
