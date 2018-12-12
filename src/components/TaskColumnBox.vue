@@ -20,6 +20,9 @@ export default {
       return this.$store.state.project.getColumns()
     }
   },
+  mounted: function() {
+    this.$store.dispatch('fetchTasks')
+  },
 }
 </script>
 

@@ -1,8 +1,8 @@
 <template>
   <div class="box">
-    <div class="title">SideProjectTracker</div>
+    <div class="title" @click="$store.commit('setCurrentPage', 'projects.index')">SideProjectTracker</div>
 
-    <div class="links">
+    <div class="links" v-if="this.$store.state.currentPage == 'projects.show'">
       <NavLink v-for="link in links"
                :key="link.key"
                :link="link"/>
@@ -57,6 +57,7 @@ export default {
     font-weight: 600;
     width: 50%;
     padding: 20px 0 17px 20px;
+    cursor: pointer;
   }
 
   .links {

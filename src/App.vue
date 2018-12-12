@@ -1,22 +1,27 @@
 <template>
   <div id="app">
     <NavBox/>
-    <TaskColumnBox/>
+    <ProjectList v-if="currentPage == 'projects.index'"/>
+    <TaskColumnBox v-if="currentPage == 'projects.show'"/>
   </div>
 </template>
 
 <script>
 import NavBox from '@/components/navigation/NavBox.vue'
+import ProjectList from '@/components/ProjectList.vue'
 import TaskColumnBox from '@/components/TaskColumnBox.vue'
 
 export default {
   name: 'app',
   components: {
     NavBox,
+    ProjectList,
     TaskColumnBox
   },
-  mounted: function() {
-    this.$store.dispatch('fetchTasks')
+  computed: {
+    currentPage() {
+      return this.$store.state.currentPage
+    }
   }
 }
 </script>
