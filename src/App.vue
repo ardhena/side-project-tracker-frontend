@@ -1,22 +1,22 @@
 <template>
   <div id="app">
     <NavBox/>
-    <ProjectList v-if="currentPage == 'projects.index'"/>
-    <TaskColumnBox v-if="currentPage == 'projects.show'"/>
+    <ProjectListPage v-if="currentPage == 'projects.list'"/>
+    <ProjectShowPage v-if="currentPage == 'projects.show'"/>
   </div>
 </template>
 
 <script>
 import NavBox from '@/components/navigation/NavBox.vue'
-import ProjectList from '@/components/ProjectList.vue'
-import TaskColumnBox from '@/components/TaskColumnBox.vue'
+import ProjectListPage from '@/components/pages/ProjectListPage.vue'
+import ProjectShowPage from '@/components/pages/ProjectShowPage.vue'
 
 export default {
   name: 'app',
   components: {
     NavBox,
-    ProjectList,
-    TaskColumnBox
+    ProjectListPage,
+    ProjectShowPage
   },
   computed: {
     currentPage() {

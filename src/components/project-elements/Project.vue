@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'ProjectListBox',
+  name: 'Project',
   props: {
     project: Object
   },
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/sass/variables";
+@import "../../assets/sass/variables";
 
 .project {
   width: 300px;

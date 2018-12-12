@@ -15,10 +15,10 @@
 
 <script>
 import draggable from 'vuedraggable'
-import Task from '@/components/Task.vue'
+import Task from '@/components/project-elements/Task.vue'
 
 export default {
-  name: 'TaskColumn',
+  name: 'Column',
   components: {
     Task,
     draggable
@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/sass/variables";
+@import "../../assets/sass/variables";
 
 .column {
   margin: 20px 0;

@@ -10,7 +10,7 @@ export default new Vuex.Store({
     apiUrl: process.env.VUE_APP_BACKEND_BASE_URL,
     project: new Project(),
     projects: [],
-    currentPage: 'projects.index'
+    currentPage: 'projects.list'
   },
   getters: {
     currentPage: (state) => {

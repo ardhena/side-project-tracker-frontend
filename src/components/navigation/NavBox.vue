@@ -1,8 +1,8 @@
 <template>
   <div class="box">
-    <div class="title" @click="$store.commit('setCurrentPage', 'projects.index')">SideProjectTracker</div>
+    <div class="title" @click="$store.commit('setCurrentPage', 'projects.list')">SideProjectTracker</div>
 
-    <div class="links" v-if="this.$store.state.currentPage == 'projects.show'">
+    <div class="links">
       <NavLink v-for="link in links"
                :key="link.key"
                :link="link"/>
@@ -21,7 +21,15 @@ export default {
   data: function() {
     var that = this
     return {
-      links: [
+      projectListLinks: [
+        {
+          name: 'New project',
+          hover: false,
+          key: 'new-project',
+          function: function() {}
+        }
+      ],
+      projectShowLinks: [
         {
           name: 'New task',
           hover: false,
@@ -39,6 +47,15 @@ export default {
           }
         },
       ]
+    }
+  },
+  computed: {
+    links() {
+      if (this.$store.state.currentPage == 'projects.show') {
+        return this.projectShowLinks
+      } else if (this.$store.state.currentPage == 'projects.list') {
+        return this.projectListLinks
+      }
     }
   }
 }
