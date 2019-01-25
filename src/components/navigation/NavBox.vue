@@ -26,7 +26,9 @@ export default {
           name: 'New project',
           hover: false,
           key: 'new-project',
-          function: function() {}
+          function: function() {
+            that.$store.dispatch('newProject')
+          }
         }
       ],
       projectShowLinks: [

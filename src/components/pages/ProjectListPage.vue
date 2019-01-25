@@ -4,6 +4,8 @@
       <Project v-for="project in projects"
                :key="project.key"
                :project="project"/>
+      <div class="dummy-project"></div>
+      <div class="dummy-project"></div>
     </div>
   </ViewContainer>
 </template>
@@ -36,8 +38,15 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   margin: auto;
+
+  .dummy-project {
+    width: 300px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px transparent solid;
+  }
 }
 
 </style>

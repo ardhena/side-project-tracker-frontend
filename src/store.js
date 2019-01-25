@@ -27,6 +27,15 @@ export default new Vuex.Store({
           context.state.projects = response.data
         })
     },
+    newProject(context) {
+      var key = window.prompt('New project name:', 'project...');
+
+      axios
+        .post(context.state.apiUrl + '/projects', {key: key})
+        .then(function () {
+          context.state.projects.push({key: key})
+        })
+    },
     fetchTasks(context) {
       axios
         .get(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks')
