@@ -9,20 +9,20 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "vue": "^2.5.16",
-    "vuedraggable": "^2.16.0",
-    "vuex": "^3.0.1",
-    "uuid": "^3.3.2",
     "cryptiles": ">=4.1.2",
-    "url-parse": ">=1.4.3"
+    "url-parse": ">=1.4.3",
+    "uuid": "^3.3.2",
+    "vue": "^2.5.22",
+    "vuedraggable": "^2.17.0",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-rc.5",
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.5",
-    "@vue/cli-service": "^3.0.0-rc.5",
-    "node-sass": "^4.9.2",
-    "sass-loader": "^7.0.3",
-    "vue-template-compiler": "^2.5.16"
+    "@vue/cli-plugin-babel": "^3.3.0",
+    "@vue/cli-plugin-eslint": "^3.3.0",
+    "@vue/cli-service": "^3.3.1",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.22"
   },
   "eslintConfig": {
     "root": true,
