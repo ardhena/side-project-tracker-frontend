@@ -1,5 +1,5 @@
 <template>
-  <ViewContainer title="Default">
+  <ViewContainer :title="project_key">
     <div class="column-container">
       <Column v-for="(column, index) in columns"
               :column="column"
@@ -22,6 +22,9 @@ export default {
   computed: {
     columns() {
       return this.$store.state.project.getColumns()
+    },
+    project_key() {
+      return this.$store.state.currentProject
     }
   },
   mounted: function() {

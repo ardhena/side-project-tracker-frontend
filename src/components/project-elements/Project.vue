@@ -3,8 +3,8 @@
        :class="hover ? 'highlighted' : ''"
        @mouseover="hover = true"
        @mouseleave="hover = false"
-       @click="$store.commit('setCurrentPage', 'projects.show')">
-    <div class="name">{{project.name}}</div>
+       @click="viewProject">
+    <div class="name">{{project.key}}</div>
   </div>
 </template>
 
@@ -17,6 +17,11 @@ export default {
   data: function() {
     return {
       hover: false
+    }
+  },
+  methods: {
+    viewProject: function() {
+      this.$store.commit('setCurrentPage', {page: 'projects.show', project: this.project.key})
     }
   }
 }

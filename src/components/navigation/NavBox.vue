@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="title" @click="$store.commit('setCurrentPage', 'projects.list')">SideProjectTracker</div>
+    <div class="title" @click="viewAllProjects">SideProjectTracker</div>
 
     <div class="links">
       <NavLink v-for="link in links"
@@ -56,6 +56,11 @@ export default {
       } else if (this.$store.state.currentPage == 'projects.list') {
         return this.projectListLinks
       }
+    }
+  },
+  methods: {
+    viewAllProjects: function() {
+      this.$store.commit('setCurrentPage', {page: 'projects.list', project: null})
     }
   }
 }

@@ -10,16 +10,13 @@ export default new Vuex.Store({
     apiUrl: process.env.VUE_APP_BACKEND_BASE_URL,
     project: new Project(),
     projects: [],
-    currentPage: 'projects.list'
-  },
-  getters: {
-    currentPage: (state) => {
-      return state.currentPage
-    }
+    currentPage: 'projects.list',
+    currentProject: null
   },
   mutations: {
-    setCurrentPage(state, newCurrentPage) {
-      state.currentPage = newCurrentPage
+    setCurrentPage(state, payload) {
+      state.currentPage = payload.page
+      state.currentProject = payload.project
     }
   },
   actions: {
@@ -32,14 +29,14 @@ export default new Vuex.Store({
     },
     fetchTasks(context) {
       axios
-        .get(context.state.apiUrl + '/projects/default/tasks')
+        .get(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks')
         .then(function (response) {
           Vue.set(context.state.project, 'columns', response.data)
         })
     },
     clearTasks(context) {
       axios
-        .delete(context.state.apiUrl + '/projects/default/tasks')
+        .delete(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks')
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.clearTasks())
         })
@@ -49,14 +46,14 @@ export default new Vuex.Store({
       let uuid = uuidv1()
 
       axios
-        .post(context.state.apiUrl + '/projects/default/tasks', {column_key: 'todo', task_key: uuid})
+        .post(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks', {column_key: 'todo', task_key: uuid})
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.addTask(uuid))
         })
     },
     updateTask(context, payload) {
       axios
-        .patch(context.state.apiUrl + '/projects/default/tasks/' + payload.task.key, {task_name: payload.task.name})
+        .patch(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks/' + payload.task.key, {task_name: payload.task.name})
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.updateTask(payload))
         })
@@ -64,7 +61,7 @@ export default new Vuex.Store({
     moveTask(context, payload) {
       if (payload.task) {
         axios
-          .post(context.state.apiUrl + '/projects/default/tasks/' + payload.task.key + '/move', {column_key: payload.column.key})
+          .post(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks/' + payload.task.key + '/move', {column_key: payload.column.key})
           .then(function () {
             Vue.set(context.state.project, 'columns', context.state.project.moveTask(payload))
           })
@@ -74,7 +71,7 @@ export default new Vuex.Store({
     },
     deleteTask(context, payload) {
       axios
-        .delete(context.state.apiUrl + '/projects/default/tasks/' + payload.task.key)
+        .delete(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks/' + payload.task.key)
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.deleteTask(payload))
         })
