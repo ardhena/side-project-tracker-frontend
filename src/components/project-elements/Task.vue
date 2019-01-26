@@ -4,20 +4,31 @@
        @mouseover="mouseOverTask"
        @mouseleave="mouseLeaveTask">
     <div class="text" v-show="!editing">
-      <span class="name"
-            @click="editTask">
-        {{task.name}}
-      </span>
+      <div class="view-container">
+        <span class="name"
+              @click="editTask">
+          {{task.name}}
+        </span>
+        <span class="version">{{task.version}}</span>
+      </div>
       <div class="buttons">
         <font-awesome-icon icon="edit" class="icon" @click="editTask"/>
         <font-awesome-icon icon="trash" class="icon" @click="deleteTask"/>
       </div>
     </div>
     <div v-show="editing" class="text-input">
-      <textarea class="content"
-             placeholder="New task"
-             v-model="task.name"
-             @keyup.enter="updateTask"/>
+      <div class="form-container">
+        <textarea class="content"
+               placeholder="New task"
+               v-model="task.name"
+               @keyup.enter="updateTask"/>
+        <select v-model="task.version">
+          <option value="">No version</option>
+          <option v-for="version in project.versions">
+            {{version.code}}
+          </option>
+        </select>
+      </div>
       <div class="buttons">
         <font-awesome-icon icon="check" class="icon" style="padding-right: 2px;" @click="updateTask"/>
         <font-awesome-icon icon="trash" class="icon" @click="deleteTask"/>
@@ -48,6 +59,11 @@ export default {
     return {
       hover: false,
       editing: false
+    }
+  },
+  computed: {
+    project() {
+      return this.$store.state.project
     }
   },
   methods: {
@@ -94,9 +110,19 @@ export default {
     justify-content: space-between;
     align-items: center;
 
+    .view-container {
+      display: inline-flex;
+      flex-direction: column;
+    }
+
     .name {
       cursor: text;
       width: auto;
+    }
+
+    .version {
+      font-size: 11px;
+      padding-top: 4px;
     }
   }
 
@@ -105,10 +131,16 @@ export default {
     flex-direction: row;
     justify-content: space-between;
 
+    .form-container {
+      display: inline-flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
     .content {
       background-color: $white;
       border: 1px $primary solid;
-      width: 100%;
+      padding-right: 2px;
     }
   }
 

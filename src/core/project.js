@@ -15,6 +15,7 @@ export class Project {
       return task.key == payload.task.key
     })
     this.columns[columnIndex].tasks[taskIndex].name = payload.task.name
+    this.columns[columnIndex].tasks[taskIndex].version = payload.task.version
     return this.columns
   }
 

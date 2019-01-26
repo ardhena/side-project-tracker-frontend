@@ -80,7 +80,7 @@ export default new Vuex.Store({
     },
     updateTask(context, payload) {
       axios
-        .patch(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks/' + payload.task.key, {task_name: payload.task.name})
+        .patch(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks/' + payload.task.key, {task_name: payload.task.name, task_version: payload.task.version})
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.updateTask(payload))
         })
