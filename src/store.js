@@ -24,7 +24,7 @@ export default new Vuex.Store({
       axios
         .get(context.state.apiUrl + '/projects')
         .then(function (response) {
-          context.state.projects = response.data
+          context.state.projects = response.data.sort((a, b) => a.key > b.key)
         })
     },
     newProject(context) {
@@ -34,6 +34,7 @@ export default new Vuex.Store({
         .post(context.state.apiUrl + '/projects', {key: key})
         .then(function () {
           context.state.projects.push({key: key})
+          context.state.projects = context.state.projects.sort((a, b) => a.key > b.key)
         })
     },
     fetchTasks(context) {
