@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     apiUrl: process.env.VUE_APP_BACKEND_BASE_URL,
     project: new Project(),
+    visibleTasks: [],
     projects: [],
     currentPage: 'projects.list',
     currentProject: null
@@ -59,13 +60,22 @@ export default new Vuex.Store({
         .get(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks')
         .then(function (response) {
           Vue.set(context.state.project, 'columns', response.data)
+          context.state.visibleTasks = context.state.project.getColumns()
         })
+    },
+    filterTasks(context, payload) {
+      let project = context.state.project
+      context.state.visibleTasks = project.filterTasks(payload.version.code)
+    },
+    resetFilterTasks(context) {
+      context.state.visibleTasks = context.state.project.getColumns()
     },
     clearTasks(context) {
       axios
         .delete(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks')
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.clearTasks())
+          context.state.visibleTasks = context.state.project.columns
         })
     },
     newTask(context) {
@@ -76,6 +86,7 @@ export default new Vuex.Store({
         .post(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks', {column_key: 'todo', task_key: uuid})
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.addTask(uuid))
+          context.state.visibleTasks = context.state.project.getColumns()
         })
     },
     updateTask(context, payload) {

@@ -2,7 +2,7 @@
   <ViewContainer :title="project_key">
     <div class="data-container">
       <div class="data-column">
-        <div class="subtitle">Versions:</div>
+        <div class="subtitle" @click="resetFilter">Versions:</div>
         <Version v-for="version in project.versions" :version="version" :key="version.code"/>
         <font-awesome-icon icon="plus" class="icon" @click="newVersion"/>
       </div>
@@ -39,7 +39,7 @@ export default {
       return this.$store.state.project
     },
     columns() {
-      return this.$store.state.project.getColumns()
+      return this.$store.state.visibleTasks
     },
     project_key() {
       return this.$store.state.currentProject
@@ -48,6 +48,9 @@ export default {
   methods: {
     newVersion: function() {
       this.$store.dispatch('newVersion')
+    },
+    resetFilter: function() {
+      this.$store.dispatch('resetFilterTasks')
     }
   },
   mounted: function() {

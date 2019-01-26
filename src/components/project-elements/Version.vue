@@ -1,5 +1,5 @@
 <template>
-  <div class="version">
+  <div class="version" @click="filterTasks">
     {{version.code}}
   </div>
 </template>
@@ -9,6 +9,11 @@ export default {
   name: 'Version',
   props: {
     version: Object
+  },
+  methods: {
+    filterTasks: function () {
+      this.$store.dispatch('filterTasks', {version: this.version})
+    }
   }
 }
 </script>
@@ -22,5 +27,6 @@ export default {
   margin: 7px;
   background-color: $primary-lightest;
   border: 1px $primary-lighter solid;
+  cursor: pointer;
 }
 </style>

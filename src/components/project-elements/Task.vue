@@ -24,7 +24,7 @@
                @keyup.enter="updateTask"/>
         <select v-model="task.version">
           <option value="">No version</option>
-          <option v-for="version in project.versions">
+          <option v-for="version in project.versions" :key="version.code">
             {{version.code}}
           </option>
         </select>

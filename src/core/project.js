@@ -44,4 +44,16 @@ export class Project {
     this.columns[2].tasks = []
     return this.columns
   }
+
+  filterTasks(version) {
+    let columns = this.columns
+    return columns.map(function(column) {
+      return {
+        ...column,
+        tasks: column.tasks.filter(function(task) {
+          return task.version == version
+        })
+      }
+    })
+  }
 }
