@@ -83,7 +83,7 @@ export default {
 }
 
 .icon {
-  padding: 4px 0;
+  padding: 5px;
   cursor: pointer;
 }
 

@@ -25,14 +25,22 @@ export default new Vuex.Store({
       axios
         .get(context.state.apiUrl + '/projects')
         .then(function (response) {
-          context.state.projects = response.data.sort((a, b) => a.key > b.key)
+          context.state.projects = response.data.sort(function(a, b) {
+            if (a.key < b.key) { return -1; }
+            if (a.key > b.key) { return 1; }
+            return 0;
+          })
         })
     },
     fetchProject(context) {
       axios
         .get(context.state.apiUrl + '/projects/' + context.state.currentProject)
         .then(function (response) {
-          Vue.set(context.state.project, 'versions', response.data.versions)
+          Vue.set(context.state.project, 'versions', response.data.versions.sort(function(a, b) {
+            if (a.code < b.code) { return -1; }
+            if (a.code > b.code) { return 1; }
+            return 0;
+          }))
         })
     },
     newProject(context) {
@@ -42,7 +50,11 @@ export default new Vuex.Store({
         .post(context.state.apiUrl + '/projects', {key: key})
         .then(function () {
           context.state.projects.push({key: key})
-          context.state.projects = context.state.projects.sort((a, b) => a.key > b.key)
+          context.state.projects = context.state.projects.sort(function(a, b) {
+            if (a.key < b.key) { return -1; }
+            if (a.key > b.key) { return 1; }
+            return 0;
+          })
         })
     },
     newVersion(context) {
@@ -52,7 +64,11 @@ export default new Vuex.Store({
         .post(context.state.apiUrl + '/projects/' + context.state.currentProject + '/versions', {code: code})
         .then(function () {
           context.state.project.versions.push({code: code})
-          Vue.set(context.state.project, 'versions', context.state.project.versions)
+          Vue.set(context.state.project, 'versions', context.state.project.versions.sort(function(a, b) {
+            if (a.code < b.code) { return -1; }
+            if (a.code > b.code) { return 1; }
+            return 0;
+          }))
         })
     },
     fetchTasks(context) {
