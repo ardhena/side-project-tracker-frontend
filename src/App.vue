@@ -37,5 +37,6 @@ body {
   font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  textarea {font-family: $font-family;}
 }
 </style>

@@ -9,38 +9,37 @@
         {{task.name}}
       </span>
       <div class="buttons">
-        <button class="edit"
-              @click="editTask">
-          Edit
-        </button>
-        <button class="delete"
-              @click="deleteTask">
-          Delete
-        </button>
+        <font-awesome-icon icon="edit" class="icon" @click="editTask"/>
+        <font-awesome-icon icon="trash" class="icon" @click="deleteTask"/>
       </div>
     </div>
     <div v-show="editing" class="text-input">
-      <input class="content"
+      <textarea class="content"
              placeholder="New task"
              v-model="task.name"
              @keyup.enter="updateTask"/>
       <div class="buttons">
-        <button class="close"
-              @click="updateTask">
-          OK
-        </button>
-        <button class="delete"
-              @click="deleteTask">
-          Delete
-        </button>
+        <font-awesome-icon icon="check" class="icon" style="padding-right: 2px;" @click="updateTask"/>
+        <font-awesome-icon icon="trash" class="icon" @click="deleteTask"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faEdit, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faEdit)
+library.add(faTrash)
+library.add(faCheck)
+
 export default {
   name: 'Task',
+  components: {
+    FontAwesomeIcon
+  },
   props: {
     task: Object,
     column: Object
@@ -79,7 +78,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 15px 0;
-  padding: 20px;
+  padding: 10px;
   background-color: $primary-lightest;
   border: 1px transparent solid;
   cursor: move;
@@ -109,23 +108,24 @@ export default {
     .content {
       background-color: $white;
       border: 1px $primary solid;
-      width: calc(100% - 50px);
-      padding: 0 5px;
+      width: 100%;
     }
   }
 
   .buttons {
-    display: inline-flex;
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    margin-left: 5px;
   }
 
-  .text-input .close, .text-input .delete, .text .edit, .text .delete {
-    background-color: $white;
-    border: 1px $primary solid;
-    padding: 5px;
+  .icon {
+    padding: 4px 0;
     cursor: pointer;
-    margin: 0 3px;
+    color: $primary;
+    &:hover {
+      color: $black;
+    }
   }
 }
 </style>
