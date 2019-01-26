@@ -18,10 +18,10 @@
     </div>
     <div v-show="editing" class="text-input">
       <div class="form-container">
-        <textarea class="content"
-               placeholder="New task"
+        <textarea rows="4" class="content"
                v-model="task.name"
-               @keyup.enter="updateTask"/>
+               @keyup.enter="updateTask">
+        </textarea>
         <select v-model="task.version">
           <option value="">No version</option>
           <option v-for="version in project.versions" :key="version.code">
@@ -139,8 +139,8 @@ export default {
 
     .content {
       background-color: $white;
-      border: 1px $primary solid;
-      padding-right: 2px;
+      border: 1px $primary-lighter solid;
+      padding: 5px;
     }
   }
 
