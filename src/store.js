@@ -44,6 +44,16 @@ export default new Vuex.Store({
           context.state.projects = context.state.projects.sort((a, b) => a.key > b.key)
         })
     },
+    newVersion(context) {
+      var code = window.prompt('New version code:', 'vX.Y.Z');
+
+      axios
+        .post(context.state.apiUrl + '/projects/' + context.state.currentProject + '/versions', {code: code})
+        .then(function () {
+          context.state.project.versions.push({code: code})
+          Vue.set(context.state.project, 'versions', context.state.project.versions)
+        })
+    },
     fetchTasks(context) {
       axios
         .get(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks')

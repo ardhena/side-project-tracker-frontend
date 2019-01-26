@@ -4,7 +4,7 @@
       <div class="data-column">
         <div class="subtitle">Versions:</div>
         <Version v-for="version in project.versions" :version="version" :key="version.code"/>
-        <font-awesome-icon icon="plus" class="icon"/>
+        <font-awesome-icon icon="plus" class="icon" @click="newVersion"/>
       </div>
     </div>
     <div class="column-container">
@@ -43,6 +43,11 @@ export default {
     },
     project_key() {
       return this.$store.state.currentProject
+    }
+  },
+  methods: {
+    newVersion: function() {
+      this.$store.dispatch('newVersion')
     }
   },
   mounted: function() {
