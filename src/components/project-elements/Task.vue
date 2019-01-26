@@ -154,7 +154,7 @@ export default {
   .icon {
     padding: 4px 0;
     cursor: pointer;
-    color: $primary;
+    color: $highlight;
     &:hover {
       color: $black;
     }

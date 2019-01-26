@@ -26,7 +26,7 @@ export default {
   .title {
     margin: auto;
     font-size: 1.5rem;
-    border-bottom: 2px solid $primary;
+    border-bottom: 2px solid $highlight;
     padding: 10px 20px;
   }
 }
