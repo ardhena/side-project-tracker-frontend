@@ -55,7 +55,6 @@ export default {
 @import "../../assets/sass/variables";
 
 .column {
-  margin: 20px 0;
   width: 350px;
   padding: 10px 20px;
 

@@ -27,6 +27,13 @@ export default new Vuex.Store({
           context.state.projects = response.data.sort((a, b) => a.key > b.key)
         })
     },
+    fetchProject(context) {
+      axios
+        .get(context.state.apiUrl + '/projects/' + context.state.currentProject)
+        .then(function (response) {
+          Vue.set(context.state.project, 'versions', response.data.versions)
+        })
+    },
     newProject(context) {
       var key = window.prompt('New project name:', 'project...');
 
