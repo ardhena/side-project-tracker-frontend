@@ -12,7 +12,8 @@ export default new Vuex.Store({
     visibleTasks: [],
     projects: [],
     currentPage: 'projects.list',
-    currentProject: null
+    currentProject: null,
+    currentFilter: null
   },
   mutations: {
     setCurrentPage(state, payload) {
@@ -82,16 +83,14 @@ export default new Vuex.Store({
     filterTasks(context, payload) {
       let project = context.state.project
       context.state.visibleTasks = project.filterTasks(payload.version.code)
-    },
-    resetFilterTasks(context) {
-      context.state.visibleTasks = context.state.project.getColumns()
+      context.state.currentFilter = payload.version.code
     },
     clearTasks(context) {
       axios
         .delete(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks')
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.clearTasks())
-          context.state.visibleTasks = context.state.project.columns
+          context.state.visibleTasks = context.state.project.filterTasks(context.state.currentFilter)
         })
     },
     newTask(context) {
@@ -102,7 +101,7 @@ export default new Vuex.Store({
         .post(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks', {column_key: 'todo', task_key: uuid})
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.addTask(uuid))
-          context.state.visibleTasks = context.state.project.getColumns()
+          context.state.visibleTasks = context.state.project.filterTasks(context.state.currentFilter)
         })
     },
     updateTask(context, payload) {
@@ -113,14 +112,16 @@ export default new Vuex.Store({
         })
     },
     moveTask(context, payload) {
-      if (payload.task) {
+      if (payload.task != null) {
         axios
           .post(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks/' + payload.task.key + '/move', {column_key: payload.column.key})
           .then(function () {
             Vue.set(context.state.project, 'columns', context.state.project.moveTask(payload))
+            context.state.visibleTasks = context.state.project.filterTasks(context.state.currentFilter)
           })
       } else {
         Vue.set(context.state.project, 'columns', context.state.project.moveTask(payload))
+        context.state.visibleTasks = context.state.project.filterTasks(context.state.currentFilter)
       }
     },
     deleteTask(context, payload) {
@@ -128,6 +129,7 @@ export default new Vuex.Store({
         .delete(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks/' + payload.task.key)
         .then(function () {
           Vue.set(context.state.project, 'columns', context.state.project.deleteTask(payload))
+          context.state.visibleTasks = context.state.project.filterTasks(context.state.currentFilter)
         })
     }
   }

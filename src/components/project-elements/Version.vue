@@ -1,5 +1,7 @@
 <template>
-  <div class="version" @click="filterTasks">
+  <div class="version"
+       :class="filterEnabled ? 'highlighted' : ''"
+       @click="filterTasks">
     {{version.code}}
   </div>
 </template>
@@ -14,7 +16,12 @@ export default {
     filterTasks: function () {
       this.$store.dispatch('filterTasks', {version: this.version})
     }
-  }
+  },
+  computed: {
+    filterEnabled() {
+      return this.$store.state.currentFilter == this.version.code
+    }
+  },
 }
 </script>
 
@@ -28,5 +35,10 @@ export default {
   background-color: $primary-lightest;
   border: 1px $primary-lighter solid;
   cursor: pointer;
+
+  &.highlighted {
+    background-color: $primary-lighter;
+    border: 1px $highlight solid;
+  }
 }
 </style>

@@ -50,7 +50,7 @@ export default {
       this.$store.dispatch('newVersion')
     },
     resetFilter: function() {
-      this.$store.dispatch('resetFilterTasks')
+      this.$store.dispatch('filterTasks', {version: {code: null}})
     }
   },
   mounted: function() {
