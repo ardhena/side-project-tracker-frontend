@@ -2,8 +2,17 @@ export class Project {
   getColumns() { return this.columns }
   setColumns(cols) { this.columns = cols }
 
-  addTask(uuid) {
-    this.columns[0].tasks.unshift({name: '', key: uuid})
+  addTask(payload) {
+    let columnIndex = this.columns.findIndex(function (column) {
+      return column.key == payload.column_key
+    })
+    let newTask = {name: '', key: payload.task_key}
+
+    if (payload.position == 'top') {
+      this.columns[columnIndex].tasks.unshift(newTask)
+    } else {
+      this.columns[columnIndex].tasks.push(newTask)
+    }
     return this.columns
   }
 

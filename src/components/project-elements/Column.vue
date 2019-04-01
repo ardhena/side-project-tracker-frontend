@@ -1,6 +1,10 @@
 <template>
   <div class="column">
-    <div class="name">{{column.name}}</div>
+    <div class="name">
+      <font-awesome-icon icon="plus" class="icon" @click="newTaskTop"/>
+      {{column.name}}
+      <font-awesome-icon icon="plus" class="icon" @click="newTaskBottom"/>
+    </div>
 
     <draggable v-model="tasks"
                :options="{group:'tasks'}"
@@ -16,12 +20,18 @@
 <script>
 import draggable from 'vuedraggable'
 import Task from '@/components/project-elements/Task.vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faPlus)
 
 export default {
   name: 'Column',
   components: {
     Task,
-    draggable
+    draggable,
+    FontAwesomeIcon
   },
   props: {
     column: Object,
@@ -47,6 +57,14 @@ export default {
         }
       }
     }
+  },
+  methods: {
+    newTaskTop: function() {
+      this.$store.dispatch('newTask', {position: 'top', column_key: this.column.key})
+    },
+    newTaskBottom: function() {
+      this.$store.dispatch('newTask', {position: 'bottom', column_key: this.column.key})
+    },
   }
 }
 </script>
@@ -69,5 +87,10 @@ export default {
     height: 620px;
     overflow: auto;
   }
+}
+
+.icon {
+  padding: 0 5px;
+  cursor: pointer;
 }
 </style>

@@ -85,14 +85,14 @@ export default new Vuex.Store({
       context.state.visibleTasks = project.filterTasks(payload.version.code)
       context.state.currentFilter = payload.version.code
     },
-    newTask(context) {
+    newTask(context, payload) {
       const uuidv1 = require('uuid/v1');
-      let uuid = uuidv1()
+      let params = { ...payload, task_key: uuidv1()}
 
       axios
-        .post(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks', {column_key: 'todo', task_key: uuid})
+        .post(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks', params)
         .then(function () {
-          Vue.set(context.state.project, 'columns', context.state.project.addTask(uuid))
+          Vue.set(context.state.project, 'columns', context.state.project.addTask(params))
           context.state.visibleTasks = context.state.project.filterTasks(context.state.currentFilter)
         })
     },
