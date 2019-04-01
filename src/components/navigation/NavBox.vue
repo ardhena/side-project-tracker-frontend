@@ -1,65 +1,13 @@
 <template>
   <div class="box">
     <div class="title" @click="viewAllProjects">SideProjectTracker</div>
-
-    <div class="links">
-      <NavLink v-for="link in links"
-               :key="link.key"
-               :link="link"/>
-    </div>
   </div>
 </template>
 
 <script>
-import NavLink from "@/components/navigation/NavLink.vue"
 
 export default {
   name: 'NavBox',
-  components: {
-    NavLink
-  },
-  data: function() {
-    var that = this
-    return {
-      projectListLinks: [
-        {
-          name: 'New project',
-          hover: false,
-          key: 'new-project',
-          function: function() {
-            that.$store.dispatch('newProject')
-          }
-        }
-      ],
-      projectShowLinks: [
-        {
-          name: 'New task',
-          hover: false,
-          key: 'new-task',
-          function: function() {
-            that.$store.dispatch('newTask')
-          }
-        },
-        {
-          name: 'Clear all tasks',
-          hover: false,
-          key: 'clear-tasks',
-          function: function() {
-            that.$store.dispatch('clearTasks')
-          }
-        },
-      ]
-    }
-  },
-  computed: {
-    links() {
-      if (this.$store.state.currentPage == 'projects.show') {
-        return this.projectShowLinks
-      } else if (this.$store.state.currentPage == 'projects.list') {
-        return this.projectListLinks
-      }
-    }
-  },
   methods: {
     viewAllProjects: function() {
       this.$store.commit('setCurrentPage', {page: 'projects.list', project: null})
@@ -82,13 +30,6 @@ export default {
     width: 50%;
     padding: 20px 0 17px 20px;
     cursor: pointer;
-  }
-
-  .links {
-    width: 50%;
-    display: inline-flex;
-    justify-content: flex-end;
-    padding: 0 20px;
   }
 }
 </style>

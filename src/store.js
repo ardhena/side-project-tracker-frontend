@@ -85,14 +85,6 @@ export default new Vuex.Store({
       context.state.visibleTasks = project.filterTasks(payload.version.code)
       context.state.currentFilter = payload.version.code
     },
-    clearTasks(context) {
-      axios
-        .delete(context.state.apiUrl + '/projects/' + context.state.currentProject + '/tasks')
-        .then(function () {
-          Vue.set(context.state.project, 'columns', context.state.project.clearTasks())
-          context.state.visibleTasks = context.state.project.filterTasks(context.state.currentFilter)
-        })
-    },
     newTask(context) {
       const uuidv1 = require('uuid/v1');
       let uuid = uuidv1()

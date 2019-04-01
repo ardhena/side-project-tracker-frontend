@@ -38,13 +38,6 @@ export class Project {
     return this.columns
   }
 
-  clearTasks() {
-    this.columns[0].tasks = []
-    this.columns[1].tasks = []
-    this.columns[2].tasks = []
-    return this.columns
-  }
-
   filterTasks(version) {
     if (version == null) {
       return this.columns

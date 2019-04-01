@@ -1,5 +1,11 @@
 <template>
   <ViewContainer title="Projects">
+    <div class="data-container">
+      <div class="data-column">
+        <font-awesome-icon icon="plus" class="icon" @click="newProject"/>
+      </div>
+    </div>
+
     <div class="box-container">
       <Project v-for="project in projects"
                :key="project.key"
@@ -13,12 +19,18 @@
 <script>
 import ViewContainer from '@/components/ViewContainer.vue'
 import Project from '@/components/project-elements/Project.vue'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faPlus)
 
 export default {
   name: 'ProjectListPage',
   components: {
     ViewContainer,
-    Project
+    Project,
+    FontAwesomeIcon
   },
   computed: {
     projects() {
@@ -28,6 +40,11 @@ export default {
   mounted: function() {
     this.$store.dispatch('fetchProjects')
   },
+  methods: {
+    newProject: function() {
+      this.$store.dispatch('newProject')
+    },
+  }
 }
 </script>
 
@@ -47,6 +64,26 @@ export default {
     padding: 20px;
     border: 1px transparent solid;
   }
+}
+
+.data-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 10px;
+
+  .data-column {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+  }
+}
+
+.icon {
+  padding: 5px;
+  cursor: pointer;
 }
 
 </style>

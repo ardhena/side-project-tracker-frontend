@@ -2,6 +2,7 @@
   <ViewContainer :title="project_key">
     <div class="data-container">
       <div class="data-column">
+        <font-awesome-icon icon="plus" class="icon" @click="newTask"/>
         <div class="subtitle" @click="resetFilter">Versions:</div>
         <Version v-for="version in project.versions" :version="version" :key="version.code"/>
         <font-awesome-icon icon="plus" class="icon" @click="newVersion"/>
@@ -46,6 +47,9 @@ export default {
     }
   },
   methods: {
+    newTask: function() {
+      this.$store.dispatch('newTask')
+    },
     newVersion: function() {
       this.$store.dispatch('newVersion')
     },
