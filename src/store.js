@@ -11,17 +11,13 @@ export default new Vuex.Store({
     project: new Project(),
     visibleTasks: [],
     projects: [],
-    currentPage: 'projects.list',
     currentProject: null,
     currentFilter: null
   },
-  mutations: {
-    setCurrentPage(state, payload) {
-      state.currentPage = payload.page
-      state.currentProject = payload.project
-    }
-  },
   actions: {
+    setCurrentProject(context, project_key) {
+      context.state.currentProject = project_key
+    },
     fetchProjects(context) {
       axios
         .get(context.state.apiUrl + '/projects')

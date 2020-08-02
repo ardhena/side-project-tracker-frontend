@@ -3,7 +3,7 @@
        :class="hover ? 'highlighted' : ''"
        @mouseover="hover = true"
        @mouseleave="hover = false"
-       @click="viewProject">
+       @click="goToProjectRoute">
     <div class="name">{{project.key}}</div>
   </div>
 </template>
@@ -20,8 +20,8 @@ export default {
     }
   },
   methods: {
-    viewProject: function() {
-      this.$store.commit('setCurrentPage', {page: 'projects.show', project: this.project.key})
+    goToProjectRoute: function() {
+      this.$router.push({ name: 'project', params: { id: this.project.key} })
     }
   }
 }

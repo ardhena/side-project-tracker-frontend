@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/sass/variables";
+@import "../assets/sass/variables";
 
 .box-container {
   display: flex;

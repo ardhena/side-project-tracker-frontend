@@ -1,27 +1,17 @@
 <template>
   <div id="app">
     <NavBox/>
-    <ProjectListPage v-if="currentPage == 'projects.list'"/>
-    <ProjectShowPage v-if="currentPage == 'projects.show'"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import NavBox from '@/components/navigation/NavBox.vue'
-import ProjectListPage from '@/components/pages/ProjectListPage.vue'
-import ProjectShowPage from '@/components/pages/ProjectShowPage.vue'
 
 export default {
   name: 'app',
   components: {
-    NavBox,
-    ProjectListPage,
-    ProjectShowPage
-  },
-  computed: {
-    currentPage() {
-      return this.$store.state.currentPage
-    }
+    NavBox
   }
 }
 </script>

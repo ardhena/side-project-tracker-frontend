@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="title" @click="viewAllProjects">SideProjectTracker</div>
+    <div class="title" @click="goToProjectsRoute">SideProjectTracker</div>
   </div>
 </template>
 
@@ -9,8 +9,10 @@
 export default {
   name: 'NavBox',
   methods: {
-    viewAllProjects: function() {
-      this.$store.commit('setCurrentPage', {page: 'projects.list', project: null})
+    goToProjectsRoute: function() {
+      if (this.$route.name !== 'projects') {
+        this.$router.push({ name: 'projects'})
+      }
     }
   }
 }

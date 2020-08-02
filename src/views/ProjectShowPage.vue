@@ -54,6 +54,7 @@ export default {
     }
   },
   mounted: function() {
+    this.$store.dispatch('setCurrentProject', this.$route.params.id)
     this.$store.dispatch('fetchProject')
     this.$store.dispatch('fetchTasks')
   },
@@ -61,7 +62,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/sass/variables";
+@import "../assets/sass/variables";
 
 .data-container {
   display: flex;
