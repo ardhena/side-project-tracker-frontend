@@ -12,6 +12,7 @@
                :project="project"/>
       <div class="dummy-project"></div>
       <div class="dummy-project"></div>
+      <div class="dummy-project"></div>
     </div>
   </ViewContainer>
 </template>
