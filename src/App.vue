@@ -2,15 +2,18 @@
   <div id="app">
     <NavBox/>
     <router-view/>
+    <FooterBox/>
   </div>
 </template>
 
 <script>
 import NavBox from '@/components/navigation/NavBox.vue'
+import FooterBox from '@/components/navigation/FooterBox.vue'
 
 export default {
   name: 'app',
   components: {
+    FooterBox,
     NavBox
   }
 }

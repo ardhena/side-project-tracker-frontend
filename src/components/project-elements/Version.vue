@@ -32,13 +32,13 @@ export default {
   display: block;
   padding: 5px;
   margin: 7px;
-  background-color: $primary-lightest;
-  border: 1px $primary-lighter solid;
+  background-color: $primary-light;
+  border: 1px $primary solid;
   cursor: pointer;
 
   &.highlighted {
-    background-color: $primary-lighter;
-    border: 1px $highlight solid;
+    background-color: $primary;
+    border: 1px $primary-dark solid;
   }
 }
 </style>

@@ -77,14 +77,15 @@ export default {
   padding: 10px 20px;
 
   .name {
-    border-bottom: 1px $primary solid;
+    border-bottom: 2px $secondary-light solid;
     padding: 10px;
     text-align: center;
     font-weight: 600;
   }
 
   .tasks {
-    height: 620px;
+    min-height: 30vh;
+    max-height: 68vh;
     overflow: auto;
   }
 }
@@ -92,5 +93,9 @@ export default {
 .icon {
   padding: 0 5px;
   cursor: pointer;
+  color: $secondary;
+  &:hover {
+    color: $black;
+  }
 }
 </style>

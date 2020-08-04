@@ -1,26 +1,14 @@
-// colors - violet
-// $black: #2c2a30;
-// $white: #fbfbfb;
+$black: #14110f;
+$white: #f3f3f4;
 
-// $primary: #b3a9c6;
+// beige
+$primary: #d9c5b2;
+$primary-light: lighten($primary, 10%);
+$primary-dark: darken($primary, 20%);
 
-// $primary-lighter: lighten($primary, 10%);
-// $primary-lightest: lighten($primary, 20%);
-
-// $highlight: #ac91e2;
-// $secondary: #e3d9f7;
-
-// colors - beige
-$black: #444554;
-$white: #fbfbfb;
-
-$primary: #bfacb5;
-
-$secondary: #bfacaa;
-$primary-lighter: lighten($secondary, 10%);
-$primary-lightest: lighten($secondary, 20%);
-
-$highlight: #9a8c98;
+// blue
+$secondary: #344966;
+$secondary-light: #a1b3ce;
 
 // fonts
 $font-family: Roboto, Helvetica, Arial, sans-serif;

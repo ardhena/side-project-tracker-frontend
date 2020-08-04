@@ -86,11 +86,16 @@ export default {
 .icon {
   padding: 5px;
   cursor: pointer;
+  color: $secondary;
+  &:hover {
+    color: $black;
+  }
 }
 
 .column-container {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 </style>

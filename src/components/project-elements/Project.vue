@@ -34,12 +34,12 @@ export default {
   width: 300px;
   margin: 20px;
   padding: 20px;
-  background-color: $primary-lightest;
-  border: 1px transparent solid;
+  background-color: $primary-light;
+  border: 1px $primary solid;
 
   &.highlighted {
-    background-color: $primary-lighter;
-    border: 1px $highlight solid;
+    background-color: $primary;
+    border: 1px $primary-dark solid;
     cursor: pointer;
   }
 }

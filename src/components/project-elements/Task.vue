@@ -95,13 +95,13 @@ export default {
   flex-direction: column;
   margin: 15px 0;
   padding: 10px;
-  background-color: $primary-lightest;
-  border: 1px transparent solid;
+  background-color: $primary-light;
+  border: 1px $primary solid;
   cursor: move;
 
   &.highlighted {
-    background-color: $primary-lighter;
-    border: 1px $highlight solid;
+    background-color: $primary;
+    border: 1px $primary-dark solid;
   }
 
   .text {
@@ -139,7 +139,7 @@ export default {
 
     .content {
       background-color: $white;
-      border: 1px $primary-lighter solid;
+      border: 1px $primary solid;
       padding: 5px;
     }
   }
@@ -154,7 +154,7 @@ export default {
   .icon {
     padding: 4px 0;
     cursor: pointer;
-    color: $highlight;
+    color: $secondary;
     &:hover {
       color: $black;
     }

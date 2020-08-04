@@ -1,7 +1,9 @@
 <template>
   <div class="view-container">
     <div class="title">{{title}}</div>
-    <slot></slot>
+    <div class="content-container">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -26,8 +28,13 @@ export default {
   .title {
     margin: auto;
     font-size: 1.5rem;
-    border-bottom: 2px solid $highlight;
+    color: $secondary;
+    border-bottom: 2px solid $secondary-light;
     padding: 10px 20px;
   }
+}
+
+.content-container {
+  min-height: 80vh;
 }
 </style>

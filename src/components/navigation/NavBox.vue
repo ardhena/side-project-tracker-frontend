@@ -22,15 +22,16 @@ export default {
 @import "../../assets/sass/variables";
 
 .box {
-  border-bottom: 1px $primary solid;
+  border-bottom: 2px $secondary solid;
+  background-color: $secondary-light;
   padding: 0;
   display: inline-flex;
-  width: 100%;
+  width: 100vw;
 
   .title {
     font-weight: 600;
-    width: 50%;
-    padding: 20px 0 17px 20px;
+    padding: 20px 20px;
+    color: $secondary;
     cursor: pointer;
   }
 }
