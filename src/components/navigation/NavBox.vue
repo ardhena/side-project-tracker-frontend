@@ -22,7 +22,7 @@ export default {
 @import "../../assets/sass/variables";
 
 .box {
-  border-bottom: 2px $secondary solid;
+  border-bottom: 1px $secondary solid;
   background-color: $secondary-light;
   padding: 0;
   display: inline-flex;

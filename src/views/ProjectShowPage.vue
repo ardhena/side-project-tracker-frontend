@@ -4,7 +4,7 @@
       <div class="data-column">
         <div class="subtitle" @click="resetFilter">Versions:</div>
         <Version v-for="version in project.versions" :version="version" :key="version.code"/>
-        <font-awesome-icon icon="plus" class="icon" @click="newVersion"/>
+        <PlusButton @click="newVersion"/>
       </div>
     </div>
     <div class="column-container">
@@ -20,11 +20,7 @@
 import ViewContainer from '@/components/ViewContainer.vue'
 import Column from '@/components/project-elements/Column.vue'
 import Version from '@/components/project-elements/Version.vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faPlus)
+import PlusButton from '@/components/buttons/PlusButton.vue'
 
 export default {
   name: 'ProjectShowPage',
@@ -32,7 +28,7 @@ export default {
     ViewContainer,
     Column,
     Version,
-    FontAwesomeIcon
+    PlusButton
   },
   computed: {
     project() {
@@ -80,15 +76,6 @@ export default {
     .subtitle {
       font-weight: 550;
     }
-  }
-}
-
-.icon {
-  padding: 5px;
-  cursor: pointer;
-  color: $secondary;
-  &:hover {
-    color: $black;
   }
 }
 

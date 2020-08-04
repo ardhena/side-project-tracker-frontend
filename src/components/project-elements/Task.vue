@@ -12,8 +12,8 @@
         <span class="version">{{task.version}}</span>
       </div>
       <div class="buttons">
-        <font-awesome-icon icon="edit" class="icon" @click="editTask"/>
-        <font-awesome-icon icon="trash" class="icon" @click="deleteTask"/>
+        <EditButton @click="editTask"/>
+        <DeleteButton @click="deleteTask"/>
       </div>
     </div>
     <div v-show="editing" class="text-input">
@@ -30,26 +30,24 @@
         </select>
       </div>
       <div class="buttons">
-        <font-awesome-icon icon="check" class="icon" style="padding-right: 2px;" @click="updateTask"/>
-        <font-awesome-icon icon="trash" class="icon" @click="deleteTask"/>
+        <SubmitButton style="padding-right: 2px;" @click="updateTask"/>
+        <DeleteButton @click="deleteTask"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faEdit, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faEdit)
-library.add(faTrash)
-library.add(faCheck)
+import EditButton from '@/components/buttons/EditButton.vue'
+import DeleteButton from '@/components/buttons/DeleteButton.vue'
+import SubmitButton from '@/components/buttons/SubmitButton.vue'
 
 export default {
   name: 'Task',
   components: {
-    FontAwesomeIcon
+    DeleteButton,
+    EditButton,
+    SubmitButton
   },
   props: {
     task: Object,
@@ -149,15 +147,6 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     margin-left: 5px;
-  }
-
-  .icon {
-    padding: 4px 0;
-    cursor: pointer;
-    color: $secondary;
-    &:hover {
-      color: $black;
-    }
   }
 }
 </style>

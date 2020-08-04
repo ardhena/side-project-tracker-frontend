@@ -2,7 +2,7 @@
   <ViewContainer title="Projects">
     <div class="data-container">
       <div class="data-column">
-        <font-awesome-icon icon="plus" class="icon" @click="newProject"/>
+        <PlusButton @click="newProject"/>
       </div>
     </div>
 
@@ -20,18 +20,14 @@
 <script>
 import ViewContainer from '@/components/ViewContainer.vue'
 import Project from '@/components/project-elements/Project.vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faPlus)
+import PlusButton from '@/components/buttons/PlusButton.vue'
 
 export default {
   name: 'ProjectListPage',
   components: {
     ViewContainer,
     Project,
-    FontAwesomeIcon
+    PlusButton
   },
   computed: {
     projects() {
@@ -81,10 +77,4 @@ export default {
     text-align: center;
   }
 }
-
-.icon {
-  padding: 5px;
-  cursor: pointer;
-}
-
 </style>
