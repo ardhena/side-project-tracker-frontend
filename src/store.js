@@ -49,6 +49,14 @@ export default new Vuex.Store({
           }))
         })
     },
+    deleteProject(context, key) {
+      axios
+        .delete(context.state.apiUrl + '/projects/' + key)
+        .then(function () {
+          context.dispatch('fetchProjects');
+          return 0;
+        })
+    },
     newProject(context) {
       var key = window.prompt('New project name:', 'project...');
 
