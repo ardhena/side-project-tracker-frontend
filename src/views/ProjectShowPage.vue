@@ -2,7 +2,7 @@
   <ViewContainer :title="project_key">
     <div class="data-container">
       <div class="data-column">
-        <div class="subtitle" @click="resetFilter">Versions:</div>
+        <div class="subtitle">Versions:</div>
         <Version v-for="version in project.versions" :version="version" :key="version.code"/>
         <PlusButton @click="newVersion"/>
       </div>
@@ -44,9 +44,6 @@ export default {
   methods: {
     newVersion: function() {
       this.$store.dispatch('newVersion')
-    },
-    resetFilter: function() {
-      this.$store.dispatch('filterTasks', {version: {code: null}})
     }
   },
   mounted: function() {
@@ -68,10 +65,11 @@ export default {
 
   .data-column {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
     text-align: center;
+    flex-wrap: wrap;
 
     .subtitle {
       font-weight: 550;

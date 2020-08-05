@@ -1,7 +1,7 @@
 <template>
   <div class="version"
        :class="filterEnabled ? 'highlighted' : ''"
-       @click="filterTasks">
+       @click="toggleFilterTasks">
     {{version.code}}
   </div>
 </template>
@@ -13,8 +13,12 @@ export default {
     version: Object
   },
   methods: {
-    filterTasks: function () {
-      this.$store.dispatch('filterTasks', {version: this.version})
+    toggleFilterTasks: function () {
+      if (this.filterEnabled) {
+        this.$store.dispatch('filterTasks', {version: {code: null}})
+      } else {
+        this.$store.dispatch('filterTasks', {version: this.version})
+      }
     }
   },
   computed: {
