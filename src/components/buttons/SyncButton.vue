@@ -1,16 +1,16 @@
 <template>
-  <font-awesome-icon icon="plus-square" class="button" @click="$emit('click')"/>
+  <font-awesome-icon icon="sync" class="button" @click="$emit('click')" @mouseover="$emit('mouseover')" @mouseleave="$emit('mouseleave')"/>
 </template>
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+import { faSync } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faPlusSquare)
+library.add(faSync)
 
 export default {
-  name: 'PlusButton',
+  name: 'SyncButton',
   components: {
     FontAwesomeIcon
   }

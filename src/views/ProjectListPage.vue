@@ -3,6 +3,16 @@
     <div class="data-container">
       <div class="data-column">
         <PlusButton @click="newProject"/>
+        <TopTooltip>
+          <template slot="content">
+            <SyncButton @click="syncProjects"/>
+          </template>
+          <template slot="tooltip">
+            <span>
+              Last sync at: {{syncAt}}
+            </span>
+          </template>
+        </TopTooltip>
       </div>
     </div>
 
@@ -21,17 +31,35 @@
 import ViewContainer from '@/components/ViewContainer.vue'
 import Project from '@/components/project-elements/Project.vue'
 import PlusButton from '@/components/buttons/PlusButton.vue'
+import SyncButton from '@/components/buttons/SyncButton.vue'
+import TopTooltip from '@/components/tooltips/TopTooltip.vue'
 
 export default {
   name: 'ProjectListPage',
   components: {
     ViewContainer,
     Project,
-    PlusButton
+    PlusButton,
+    SyncButton,
+    TopTooltip
   },
   computed: {
     projects() {
       return this.$store.state.projects
+    },
+    syncAt() {
+      if (this.$store.state.syncAt == null) {
+        return 'unknown'
+      }
+      const d = new Date(this.$store.state.syncAt)
+      const day = d.getDate()
+      const month = d.getMonth()
+      const year = d.getFullYear()
+
+      const hours = d.getHours()
+      const minutes = d.getMinutes()
+
+      return `${hours}:${minutes} ${day}.${month}.${year}`
     }
   },
   mounted: function() {
@@ -41,6 +69,9 @@ export default {
     newProject: function() {
       this.$store.dispatch('newProject')
     },
+    syncProjects: function() {
+      this.$store.dispatch('syncProjects')
+    }
   }
 }
 </script>
@@ -77,4 +108,5 @@ export default {
     text-align: center;
   }
 }
+
 </style>

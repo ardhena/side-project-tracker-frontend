@@ -12,11 +12,20 @@ export default new Vuex.Store({
     visibleTasks: [],
     projects: [],
     currentProject: null,
-    currentFilter: null
+    currentFilter: null,
+    syncAt: null
   },
   actions: {
     setCurrentProject(context, project_key) {
       context.state.currentProject = project_key
+    },
+    syncProjects(context) {
+      axios
+        .put(context.state.apiUrl + '/projects/sync')
+        .then(function () {
+          context.state.syncAt = Date.now()
+          return 0;
+        })
     },
     fetchProjects(context) {
       axios
