@@ -69,8 +69,8 @@ export default {
 @import "../../assets/sass/variables";
 
 .column {
-  width: 350px;
-  padding: 10px 20px;
+  width: 400px;
+  padding: 10px;
 
   .name {
     border-bottom: 2px $secondary-light solid;
@@ -83,6 +83,7 @@ export default {
     min-height: 30vh;
     max-height: 68vh;
     overflow: auto;
+    padding: 0 25px;
   }
 }
 </style>
